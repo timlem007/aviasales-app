@@ -1,0 +1,28 @@
+$whiteColor: #ffffff;
+$blueColor: #2196f3;
+$blackTextColor: #4a4a4a;
+$someBlackTextColor: #a0b0b9;
+
+body {
+  background: #f3f7fa;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  background: #f3f7fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 103px;
+}
+
+.header__logo {
+  margin-bottom: 40px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,41 @@
+.main__results__ticket-list__ticket {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 185px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.main__results__ticket-list__ticket__price {
+  margin-bottom: 20px;
+}
+.main__results__ticket-list__ticket__info {
+  margin-bottom: 10px;
+}
+
+.main__results__ticket-list__ticket__price,
+.main__results__ticket-list__ticket__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main__results__ticket-list__ticket__info__key {
+  display: flex;
+  flex-direction: row;
+  color: #a0b0b9;
+}
+.main__results__ticket-list__ticket__info__value {
+  display: flex;
+  flex-direction: row;
+  color: #4a4a4a;
+}
+
+.main__results__ticket-list__ticket__info__key__info,
+.main__results__ticket-list__ticket__info__value__info {
+  width: 161px;
+  margin-bottom: 0px;
+}

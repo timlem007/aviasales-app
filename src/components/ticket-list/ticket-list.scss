@@ -1,0 +1,64 @@
+.main__results {
+  width: 500px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.main__results__ticket-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+}
+
+.ant-tabs-nav {
+  background: #ffffff;
+  display: block;
+  height: 50px;
+  padding: 0px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #dfe5ec !important;
+  border-radius: 10px !important;
+}
+
+.ant-tabs-nav-wrap {
+  border-radius: 10px !important;
+}
+
+.ant-tabs-nav-list {
+  width: 100%;
+}
+
+.ant-tabs-tab {
+  width: 168px;
+  padding: 15px !important;
+  color: #4a4a4a !important;
+  justify-content: center;
+}
+
+.ant-tabs-tab-active {
+  background: #2196f3 !important;
+  color: #ffffff !important;
+}
+
+.ant-tabs-tab-btn {
+  color: inherit !important;
+}
+
+.ant-tabs-tabpane-active {
+  display: flex;
+  justify-content: center;
+}
+
+.main__results__see-more {
+  background: #2196f3;
+  height: 50px;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  border-radius: 5px;
+  color: #ffffff;
+}

@@ -1,0 +1,23 @@
+.main__filter {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 232px;
+  height: 252px;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.main__filter__text {
+  // padding: 20px;
+  margin: 0px;
+}
+
+.ant-checkbox-wrapper + .ant-checkbox-wrapper {
+  margin: 0px !important;
+}
+
+// .ant-checkbox-checked .ant-checkbox-inner::after {
+// 	border: 2px solid #2196F3 !important;
+// }
