@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Checkbox } from 'antd';
-import * as actions from '../redux/actions';
+import * as actions from '../../redux/actions';
 import './filter.scss';
 
 function Filter({
@@ -11,10 +11,7 @@ function Filter({
   twoChange,
   threeChange,
   filterAll,
-  filterNoChange,
-  filterOneChange,
-  filterTwoChange,
-  filterThreeChange,
+  filterChange,
 }) {
   return (
     <div className="main__filter">
@@ -29,28 +26,28 @@ function Filter({
       <Checkbox
         className="main__filter__checkbox"
         checked={noChange}
-        onChange={() => filterNoChange()}
+        onChange={() => filterChange('noChange')}
       >
         Без пересадок
       </Checkbox>
       <Checkbox
         className="main__filter__checkbox"
         checked={oneChange}
-        onChange={filterOneChange}
+        onChange={() => filterChange('oneChange')}
       >
         1 пересадка
       </Checkbox>
       <Checkbox
         className="main__filter__checkbox"
         checked={twoChange}
-        onChange={filterTwoChange}
+        onChange={() => filterChange('twoChange')}
       >
         2 пересадки
       </Checkbox>
       <Checkbox
         className="main__filter__checkbox"
         checked={threeChange}
-        onChange={filterThreeChange}
+        onChange={() => filterChange('threeChange')}
       >
         3 пересадки
       </Checkbox>
@@ -60,7 +57,5 @@ function Filter({
 }
 
 const mapStateToProps = (state) => state.filter;
-const {
-  tabChange, getTickets, addTickets, ...filterActions
-} = actions;
-export default connect(mapStateToProps, filterActions)(Filter);
+const { filterAll, filterChange } = actions;
+export default connect(mapStateToProps, { filterAll, filterChange })(Filter);

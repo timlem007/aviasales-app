@@ -1,2 +1,2 @@
 aviasales-app
-https://aviasales-app-d79o41uh2-timlem007.vercel.app/
+https://aviasales-qemhqs9z4-timlem007.vercel.app/

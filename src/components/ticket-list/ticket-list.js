@@ -3,15 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import 'antd/dist/antd.min.css';
 import { Tabs, Spin } from 'antd';
-import { tabChange, getTickets, addTickets } from '../redux/actions';
+import { tabChange, getTickets, addTickets } from '../../redux/actions';
 import './ticket-list.scss';
 
-import AviasalesService from '../services/aviasales-service';
+import AviasalesService from '../../services/aviasales-service';
 import Ticket from '../ticket';
+import afterFilter from './after-filter';
+import afterSort from './after-sort';
 
 const { TabPane } = Tabs;
 let ticketId = 1;
-let resultsList = [];
 function TicketList({
   tab, tabChanges, tickets, getTicketss, maxTicketId, addTicketss, filter,
 }) {
@@ -22,9 +23,10 @@ function TicketList({
       if (!stop) {
         await Info.getTickets().then((body) => {
           getTicketss(body.tickets);
+          setLoading(false);
           return allTickets(body.stop);
         });
-      } else setLoading(false);
+      }
     };
 
     const asyncSearchId = async () => {
@@ -35,45 +37,7 @@ function TicketList({
     // eslint-disable-next-line
   }, []);
 
-  const afterFilter = () => {
-    let result = [];
-    const arrayConnect = (number) => result.concat(
-      tickets.filter((el) => el.segments[0].stops.length === number
-      && el.segments[1].stops.length === number),
-    );
-    if (filter.all) result = tickets;
-    else {
-      if (filter.noChange) result = arrayConnect(0);
-      if (filter.oneChange) result = arrayConnect(1);
-      if (filter.twoChange) result = arrayConnect(2);
-      if (filter.threeChange) result = arrayConnect(3);
-    }
-    resultsList = result;
-    return result;
-  };
-
-  const tabsSort = () => {
-    let result = [];
-    switch (tab) {
-      case 'lowCost':
-        result = afterFilter().sort((ab, bc) => ab.price - bc.price);
-        break;
-      case 'fastest':
-        result = afterFilter().sort(
-          (ab, bc) => (ab.segments[0].duration + ab.segments[1].duration)
-          - (bc.segments[0].duration + bc.segments[1].duration),
-        );
-        break;
-      case 'optimal':
-        result = afterFilter();
-        break;
-      default:
-        result = afterFilter();
-    }
-    return result;
-  };
-
-  const resultList = (maxId) => tabsSort()
+  const resultList = (maxId) => afterSort(afterFilter(tickets, filter), tab)
     .slice(0, maxId)
     .map((el) => {
       ticketId += 1;
@@ -104,12 +68,12 @@ function TicketList({
           {tab === 'optimal' ? result : null}
         </TabPane>
       </Tabs>
-      {loading || !resultsList.length ? null : (
+      {loading || !afterFilter(tickets, filter).length ? null : (
         <button type="button" className="main__results__see-more" onClick={() => addTicketss(tickets)}>
           ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ!
         </button>
       )}
-      {loading || resultsList.length ? null
+      {loading || afterFilter(tickets, filter).length ? null
         : <p>Рейсов, подходящих под заданные фильтры, не найдено</p>}
     </div>
   );

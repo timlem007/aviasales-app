@@ -30,17 +30,8 @@ const reducer = (state = isAllFilterChecked(initialState), action) => {
         Object.keys(filter).forEach((filterName) => (filter[filterName] = false));
       }
       return { ...newObj, filter };
-    case 'FILTER_NO_CHANGE':
-      filter.noChange = !filter.noChange;
-      return isAllFilterChecked({ ...newObj, filter });
-    case 'FILTER_ONE_CHANGE':
-      filter.oneChange = !filter.oneChange;
-      return isAllFilterChecked({ ...newObj, filter });
-    case 'FILTER_TWO_CHANGE':
-      filter.twoChange = !filter.twoChange;
-      return isAllFilterChecked({ ...newObj, filter });
-    case 'FILTER_THREE_CHANGE':
-      filter.threeChange = !filter.threeChange;
+    case 'FILTER_CHANGE':
+      filter[action.payload] = !filter[action.payload];
       return isAllFilterChecked({ ...newObj, filter });
 
     case 'TAB_CHANGE':
@@ -48,7 +39,6 @@ const reducer = (state = isAllFilterChecked(initialState), action) => {
       return newObj;
 
     case 'TICKETS':
-      // newObj.tickets = newObj.tickets.concat(action.tickets);
       return { ...newObj, tickets: [...newObj.tickets.concat(action.tickets)] };
 
     case 'ADD_TICKETS':
