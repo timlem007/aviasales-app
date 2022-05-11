@@ -1,5 +1,5 @@
 export default class AviasalesService {
-  GET_SEARCH = 'https://front-test.beta.aviasales.ru/';
+  GET_SEARCH = 'https://aviasales-test-api.kata.academy/';
 
   getSearchId = async () => {
     try {
